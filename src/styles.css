@@ -15770,3 +15770,7 @@ body.compensate-for-scrollbar {
         right: 0
     }
 }
+.text-error{
+    color: var(--danger);
+    font-size: 11px;
+}
