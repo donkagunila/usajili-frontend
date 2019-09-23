@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import { TokenService } from 'src/app/_services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
 
   
 
-  constructor(public auth: AuthService, public token: TokenService) { 
+  constructor(public auth: AuthService, 
+              public token: TokenService, 
+              private router: Router) { 
     
   }
 
@@ -31,19 +34,36 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+
+    // change login button to loading
+
+
+    // remove all errors from the page
     this.errorEmail = null;
     this.error = '';
+
+    // post data to the login page
     this.auth.login(this.form).subscribe(
-      data => this.handleResponse(data),
-      error => this.handleError(error)
+      data => {
+        this.handleResponse(data)
+      },
+
+      // handle any error
+      error => this.handleError(error),
     )
    
   }
 
   handleResponse(data: any){
     this.results = data;
+
+    // handle the token
     this.token.handle(data.access_token);
-    this.token.checkToken();
+     // change auth status
+     this.auth.changeAuthStatus(true);
+    //  navigate to home
+     this.router.navigateByUrl('/home');
+     console.log('remove loader')
   }
 
   handleError(error: any){

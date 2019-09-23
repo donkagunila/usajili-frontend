@@ -9,7 +9,11 @@ export class TokenService {
   constructor() { }
 
   handle(token: any){
+
+    // set token in localstorage
     this.set(token);
+
+
   }
 
   set(token: any){
@@ -26,17 +30,21 @@ export class TokenService {
 
   checkToken(){
     const token = this.get();
+
     if(token){
-     return  token.split('.')[1];
+      const payload = this.payload(token);
       
-    } 
+      if(payload) {
+        return payload.iss === 'http://3.122.199.78:8001/api/auth/login' ? true : false;
+      }
+    }
 
     return false;
 
   }
 
   payload(token: any){
-    const payload =  token.split('.')[1];
+    const payload = token.split('.')[1];
    return this.decode(payload);
   // return payload;
   }
@@ -44,4 +52,10 @@ export class TokenService {
   decode(payload: any){
     return JSON.parse(atob(payload));
   }
+
+
+  loggedIn() {
+    return this.checkToken();
+  }
+
 }

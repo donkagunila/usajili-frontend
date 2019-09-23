@@ -11,6 +11,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error/error404/error404.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Error404Component } from './error/error404/error404.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    Error404Component
+    Error404Component,
+    MainComponent
   ],
   imports: [
     BrowserModule,
