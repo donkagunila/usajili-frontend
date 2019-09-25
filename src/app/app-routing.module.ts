@@ -7,6 +7,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { MainComponent } from './main/main.component';
 import { BeforeLoginService } from './_services/before-login.service';
 import { AfterLoginService } from './_services/after-login.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { 
@@ -27,6 +28,11 @@ const routes: Routes = [
     path: 'auth/sign-up', 
     component: RegisterComponent,
    
+  },
+  { 
+    path: 'profile', 
+    component: ProfileComponent, 
+    canActivate: [AfterLoginService],
   },
   {path: '**', component: Error404Component}
 ];

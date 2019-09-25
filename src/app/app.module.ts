@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error/error404/error404.component';
 import { MainComponent } from './main/main.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SidebarComponent } from './incs/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { MainComponent } from './main/main.component';
     RegisterComponent,
     HomeComponent,
     Error404Component,
-    MainComponent
+    MainComponent,
+    ProfileComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

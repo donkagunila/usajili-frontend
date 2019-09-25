@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white border-bottom">
 
-  <div class="container">
+  <div class="container-fluid">
   
 
     <!-- Brand -->
@@ -21,16 +21,21 @@
         <i class="fe fe-x"></i>
       </button>
 
+      <form class="form-inline my-6 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-5" style="min-width: 400px" type="search" placeholder="Search" aria-label="Search">
+        </form>
+
       <!-- Navigation -->
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item" *ngIf="loggedIn">
-          <a routerLink="/account" class="nav-link">Account</a>
-        </li>
+            <a routerLink="/" class="nav-link">Home</a>
+          </li>
 
-        <li class="nav-item" *ngIf="loggedIn">
-          <a href="#" (click)="logout()" class="nav-link">Logout</a>
-        </li>
+          <li class="nav-item" *ngIf="loggedIn">
+              <a routerLink="/categories" class="nav-link">Categories</a>
+            </li>
+
+  
 
         <li class="nav-item" *ngIf="!loggedIn">
             <a routerLink="/auth/sign-in" class="nav-link">Sign In</a>
@@ -39,6 +44,22 @@
         <li class="nav-item" *ngIf="!loggedIn">
             <a routerLink="/auth/sign-up" class="btn btn-primary nav-btn">Sign Up</a>
         </li>
+
+        <li class="nav-item" ngbDropdown>
+            <div ngbDropdown class="d-inline-block">
+                <a class="nav-link" href="#" id="dropdownBasic1" ngbDropdownToggle>Account</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a class="dropdown-item" routerLink='/profile'>Profile</a>
+                  <a class="dropdown-item" routerLink='/settings'>Settings</a>
+                  <a class="dropdown-item" routerLink='/settings'>Enrollments</a>
+                  <div class="dropdown-divider"></div>
+                  <button class="dropdown-item" (click)="logout()">Logout</button>
+                </div>
+              </div>
+        </li>
+
+        
+           
       
       </ul>
 
